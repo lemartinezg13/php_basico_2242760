@@ -17,55 +17,46 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//callback: funcion sin nombre
-//que hace parte de los parametros de la invocacion de otra
+//cellback: función sin nombre
+//que hace parte de los parametros de invocación de otra
 Route::get('variables', function(){
-    //JAVA: Fuertemente tipados
-    $mensaje = 10;
+    //JAVA: Fuertemente tipado
+    //PHP, JS, PHYTON: Debilmente tipado
+    $mensaje=10;
     var_dump($mensaje);
-    echo "<hr />";
-    $mensaje = true;
+    echo  "<hr />";
+    $mensaje="Dilan";
     var_dump($mensaje);
 });
 
-Route::get("arreglos", function(){
-    //Arreglo: estructura de datos
-    $estudiantes = [ "AN" => "Ana",
+Route::get('arreglos', function(){
+    $estudiantes = [ "AN" =>  "Ana",
                      "MA" => "Maria",
-                      "JO" => "Jorge"
-                    ];
+                     "JO" =>  "Jorge"];
     echo "<pre>";
     print_r($estudiantes);
     echo "</pre>";
 });
-
 Route::get('paises', function(){
-
     $paises = [
-        "COLOMBIA" =>[
-            "capital" => "Bogotá",
-            "moneda" => "Peso",
-            "poblacion" => 50.34
+        "Colombia"=> [
+            "Capital" => "Bogotá",
+            "Moneda" => "Peso",
+            "Poblacion" => 50.34
         ],
-        "PERU" => [
-            "capital" => "Lima",
-            "moneda" => "Sol",
-            "poblacion" => 32.84
+        "Peru"=> [
+            "Capital" => "Lima",
+            "Moneda" => "Soles",
+            "Poblacion" => 32.84
         ],
-        "PARAGUAY" => [
-            "capital" => "Asunción",
-            "moneda" => "Guaraní",
-            "poblacion" => 7
-
-            ]
+        "Paraguay"=> [
+            "Capital" => "Asunción",
+            "Moneda" => "Guaraní paraguayo",
+            "Poblacion" => 7
+        ]
     ];
 
-    foreach($paises as $nombrepais => $pais)
-    echo "<h1>$nombrepais</h1>";
-    echo "<pre>";
-    print_r($paises["capital"]);
-    print_r($paises["moneda"]);
-    echo "</pre>";
-    echo "</hr>";
-
+   //invocar vista
+//llevar los datos a a la vista
+return view("paises")->with("naciones",$paises);
 });
