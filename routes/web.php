@@ -56,7 +56,12 @@ Route::get('paises', function(){
         ]
     ];
 
-   //invocar vista
-//llevar los datos a a la vista
-return view("paises")->with("naciones",$paises);
+    //invocar la vista
+    //llevando los datos a ella
+    return view("paises") ->with("naciones", $paises);
+
 });
+
+Route::get('formulario_buscador', "MetabuscadorController@formulario_buscador");
+
+Route::post('buscar', "MetabuscadorController@buscar");
